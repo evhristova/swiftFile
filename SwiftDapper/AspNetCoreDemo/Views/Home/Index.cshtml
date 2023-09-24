@@ -1,0 +1,31 @@
+﻿@{
+    this.ViewData["Title"] = "Home";
+}
+@model String 
+@using AspNetCoreDemo.Controllers
+@using (Html.BeginForm("UploadTextFile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" })) ;
+
+<br/>
+
+<form asp-controller="Home" asp-action="UploadTextFile" enctype="multipart/form-data" method="post">
+    <div class="table-responsive">
+        <table class="table table-bordered table-condensed table-hover" style="width: 50%;">
+            <thead class="table-dark">
+                <tr>
+                    <th class="text-center">Upload Form</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>
+                        Select a .txt file:
+                        <br/>
+                        <input type="file" name="file" id="file" class="form-control" style="width: 100%;height: 45px;" />
+                        <p class="lead">@this.Model</p>
+                        <button type="submit" class="btn btn-primary">Upload .txt file</button>
+                       </td>    
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</form>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Swift>
+@{
+    this.ViewData["Title"] = "Swifts";
+}
+<body>
+    <h2>Swifts</h2>
+    <br/><br/>
+    @if (ViewData["ErrorMessage"] != null)
+                        {
+                            <div class="row">
+                                <div class="col text-center">
+                                    <p>&nbsp;</p>
+                                    <p>@ViewData["ErrorMessage"]</p>
+                                </div>
+                            </div>
+
+                        }
+                        else
+                        {
+    <div class="table-responsive">
+        <table class="table table-bordered table-condensed table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th class="text-center">Blocks</th>
+                    <th class="text-center">Narrative</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var swift in Model)
+                {
+                    <tr>
+                        <td>ID: @swift.Id
+                            <br/><br/>
+                            Basic Header Block: @swift.BasicHeaderBlock
+                            <br /><br />
+                            Application Header Block: @swift.ApplicationHeaderBlock
+                            <br /><br />
+                            User Header Block: @swift.UserHeaderBlock
+                            <br/><br/>
+                            Transaction Reference Number: @swift.TransactionReferenceNumber
+                            <br /><br />
+                            Related Reference: @swift.RelatedReference
+                            <br /><br />
+                            Trailer Block Mac: @swift.TrailerBlockMac
+                            <br /><br />
+                            Trailer Block Chk: @swift.TrailerBlockChk
+                        <td>
+                                    @Html.Raw(@swift.Narrative.Replace("\r\n", "<br />"))
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    }
+</body>
+    
